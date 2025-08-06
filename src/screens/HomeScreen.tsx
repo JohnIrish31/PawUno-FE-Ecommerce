@@ -7,7 +7,7 @@ export default function HomeScreen() {
 
   return (
     <View>
-      <Text>Welcome to Home Scree1n</Text>
+      <Text>Welcome to Home Scree11n</Text>
       <Button title="Logout" onPress={logout} />
     </View>
   );
