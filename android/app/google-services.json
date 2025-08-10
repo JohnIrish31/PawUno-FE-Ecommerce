@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "246490877002",
+    "project_id": "pawuno",
+    "storage_bucket": "pawuno.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:246490877002:android:318bf059e2f010f307aab3",
+        "android_client_info": {
+          "package_name": "com.pawuno"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "246490877002-ir6prfm2bisjth517v1a2kngkr3mptej.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC-JF8FRz1DyM2e1y4N7H1O7hCSx1XvxoY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "246490877002-ir6prfm2bisjth517v1a2kngkr3mptej.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

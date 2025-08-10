@@ -1,16 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { View, ActivityIndicator } from 'react-native';
-import LoginScreen from './src/screens/LoginScreen';
-import HomeScreen from './src/screens/HomeScreen';
+import RootNavigator from './src/navigation/RootNavigator';
 import { useAuthStore } from './src/store/useAuthStore';
 
 export default function App() {
-  const { isLoggedIn, checkLoginStatus } = useAuthStore();
+  const { checkLoginStatus } = useAuthStore();
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const init = async () => {
-      await checkLoginStatus();
+      await checkLoginStatus(); // Calls API or local storage
       setLoading(false);
     };
     init();
@@ -24,5 +23,5 @@ export default function App() {
     );
   }
 
-  return isLoggedIn ? <HomeScreen /> : <LoginScreen />;
+  return <RootNavigator />;
 }

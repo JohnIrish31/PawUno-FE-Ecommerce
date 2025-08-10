@@ -2,32 +2,28 @@ import React, { useState } from 'react';
 import {
   View,
   Text,
-  StyleSheet,
   TextInput,
+  StyleSheet,
   TouchableOpacity,
+  Image,
   KeyboardAvoidingView,
   Platform,
-  ActivityIndicator,
   ImageBackground,
 } from 'react-native';
-import { useAuthStore } from '../store/useAuthStore';
-import { Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import type { AuthStackParamList } from '../navigation/types';
 import { commonLoginSignup as styles } from '../styles/commonLoginSignup';
 
-export default function LoginScreen() {
+export default function SignUpScreen() {
   const navigation =
     useNavigation<NativeStackNavigationProp<AuthStackParamList>>();
-  const login = useAuthStore(state => state.login);
-  const [loading, setLoading] = useState(false);
-
-  const handleLogin = async () => {
-    setLoading(true);
-    await login();
-    setLoading(false);
-  };
+  const [form, setForm] = useState({
+    fullName: '',
+    email: '',
+    password: '',
+    confirmPassword: '',
+  });
 
   return (
     <ImageBackground
@@ -46,28 +42,39 @@ export default function LoginScreen() {
           />
 
           <TextInput
+            placeholder="Full Name"
+            placeholderTextColor="#ccc"
+            style={styles.input}
+            value={form.fullName}
+            onChangeText={text => setForm({ ...form, fullName: text })}
+          />
+          <TextInput
             placeholder="Email"
             placeholderTextColor="#ccc"
             style={styles.input}
             keyboardType="email-address"
+            value={form.email}
+            onChangeText={text => setForm({ ...form, email: text })}
           />
           <TextInput
             placeholder="Password"
             placeholderTextColor="#ccc"
             style={styles.input}
             secureTextEntry
+            value={form.password}
+            onChangeText={text => setForm({ ...form, password: text })}
+          />
+          <TextInput
+            placeholder="Confirm Password"
+            placeholderTextColor="#ccc"
+            style={styles.input}
+            secureTextEntry
+            value={form.confirmPassword}
+            onChangeText={text => setForm({ ...form, confirmPassword: text })}
           />
 
-          <TouchableOpacity
-            style={styles.button}
-            onPress={handleLogin}
-            disabled={loading}
-          >
-            {loading ? (
-              <ActivityIndicator color="#fff" />
-            ) : (
-              <Text style={styles.buttonText}>Log In</Text>
-            )}
+          <TouchableOpacity style={styles.button}>
+            <Text style={styles.buttonText}>Sign Up</Text>
           </TouchableOpacity>
 
           <Text style={styles.or}>───────── OR ─────────</Text>
@@ -78,22 +85,23 @@ export default function LoginScreen() {
                 source={require('../assets/google.png')}
                 style={styles.socialIcon}
               />
-              <Text style={styles.socialText}>Continue with Google</Text>
+              <Text style={styles.socialText}>Sign up with Google</Text>
             </View>
           </TouchableOpacity>
-          <TouchableOpacity style={[styles.socialButton]}>
+          <TouchableOpacity style={styles.socialButton}>
             <View style={styles.socialButtonContent}>
               <Image
                 source={require('../assets/facebook.jpg')}
                 style={styles.socialIcon}
               />
-              <Text style={styles.socialText}>Continue with Facebook</Text>
+              <Text style={styles.socialText}>Sign up with Facebook</Text>
             </View>
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => navigation.navigate('SignUp')}>
+
+          <TouchableOpacity onPress={() => navigation.goBack()}>
             <Text style={styles.signUpText}>
-              Don’t have an account?{' '}
-              <Text style={styles.signUpLink}>Sign up</Text>
+              Already have an account?{' '}
+              <Text style={styles.signUpLink}>Log In</Text>
             </Text>
           </TouchableOpacity>
         </View>

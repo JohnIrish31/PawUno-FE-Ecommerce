@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">pawuno</string>
+    <string name="facebook_app_id">1146910240599894</string>
+    <string name="fb_login_protocol_scheme">fb1146910240599894</string>
 </resources>
